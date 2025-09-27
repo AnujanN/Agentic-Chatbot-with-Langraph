@@ -5,3 +5,6 @@ langchain_community
 langgraph
 langchain_groq
 uvicorn
+streamlit
+requests
+python-dotenv
