@@ -43,21 +43,11 @@ if st.button("Send"):
     if not user_input.strip():
         st.warning("Please enter a message.")
     else:
-        # Determine the model provider based on the selected model
-        if selected_model.startswith("gemini"):
-            model_provider = "gemini"
-        else:
-            model_provider = "groq"
-        
-        # Create payload in the format expected by FastAPI ChatRequest
+        # Create payload in the format expected by RequestState from notebook
         payload = {
-            "question": user_input,
-            "model_provider": model_provider,
             "model_name": selected_model,
-            "use_rag": False,
-            "use_agent": True,
             "system_prompt": given_system_prompt or "You are a helpful AI assistant.",
-            "messages": []
+            "messages": [user_input]
         }
         
         try:
