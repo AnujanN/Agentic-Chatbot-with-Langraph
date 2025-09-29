@@ -6,6 +6,7 @@ python-dotenv
 pydantic
 langchain
 langchain-community
+langchain-google-genai
 langgraph
 langchain-groq
 google-generativeai

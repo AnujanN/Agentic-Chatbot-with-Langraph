@@ -7,7 +7,9 @@ API_URL = "http://127.0.0.1:8000/chat"
 
 MODEL_NAMES = [
     "llama-3.3-70b-versatile",  
-    "llama-3.1-8b-instant"     
+    "llama-3.1-8b-instant",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro"
 ]
 
 st.title("🤖 LangGraph AI Agent Chatbot")
@@ -41,11 +43,21 @@ if st.button("Send"):
     if not user_input.strip():
         st.warning("Please enter a message.")
     else:
-        # Fix: Use correct field name and format expected by FastAPI
+        # Determine the model provider based on the selected model
+        if selected_model.startswith("gemini"):
+            model_provider = "gemini"
+        else:
+            model_provider = "groq"
+        
+        # Create payload in the format expected by FastAPI ChatRequest
         payload = {
+            "question": user_input,
+            "model_provider": model_provider,
             "model_name": selected_model,
+            "use_rag": False,
+            "use_agent": True,
             "system_prompt": given_system_prompt or "You are a helpful AI assistant.",
-            "messages": [user_input]  # ✅ Changed from "user_input" to "messages" (list)
+            "messages": []
         }
         
         try:
