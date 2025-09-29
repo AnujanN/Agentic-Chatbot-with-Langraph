@@ -6,8 +6,10 @@ import os
 from langgraph.prebuilt import create_react_agent
 from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
 
-import os
+# Load environment variables from .env file
+load_dotenv()
 
 groq_api_key = os.getenv("GROQ_API_KEY")
 gemini_api_key = os.getenv("GEMINI_API_KEY")

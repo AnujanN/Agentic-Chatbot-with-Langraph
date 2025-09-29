@@ -73,10 +73,22 @@ if st.button("Send"):
             # Display the response
             st.success("Response from Agent:")
             
-            # Handle different response formats
+            # Handle ChatResponse format from FastAPI
             if isinstance(data, dict):
-                if "messages" in data and data["messages"]:
-                    # Extract the last message content
+                if "answer" in data:
+                    # This is the expected ChatResponse format
+                    st.write(data["answer"])
+                    
+                    # Show model info if available
+                    if "model_used" in data and "provider_used" in data:
+                        st.info(f"🤖 Model: {data['provider_used']}/{data['model_used']}")
+                
+                elif "error" in data:
+                    # Handle error responses
+                    st.error(f"Error: {data['error']}")
+                
+                elif "messages" in data and data["messages"]:
+                    # Fallback for old format
                     last_message = data["messages"][-1]
                     if isinstance(last_message, dict) and "content" in last_message:
                         st.write(last_message["content"])
