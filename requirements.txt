@@ -7,6 +7,7 @@ pydantic
 langchain
 langchain-community
 langchain-google-genai
+langchain-tavily
 langgraph
 langchain-groq
 google-generativeai
@@ -21,5 +22,8 @@ opencv-python
 pytesseract
 faiss-cpu
 numpy
-python-magic-bin # For Windows file type detection
+python-magic-bin
 loguru
+sentence-transformers 
+langchain-huggingface
+accelerate # For faster model loading
