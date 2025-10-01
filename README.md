@@ -1,4 +1,4 @@
-# 🤖 AI Agent Chatbot with LangGraph
+# Multimodal RAG Agent with LangGraph
 Intelligent multimodal AI agent that chooses between web search, document retrieval, and image analysis.
 
 ## 🚀 Quick Setup
