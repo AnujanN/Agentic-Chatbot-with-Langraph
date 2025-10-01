@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+
+# Virtual environment
+.venv
+
+# IDE & OS files
+.vscode/
+
+# Git
+.git/
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Temporary files
+uploads/
+temp_images/
+*.log
